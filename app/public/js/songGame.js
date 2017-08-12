@@ -1,3 +1,4 @@
+//---------------------   CAPTURING USER CHOICES   ---------------------//
 var roomChosen = 0;
 var catChosen = 0;
 var songChosen = 0;
@@ -43,3 +44,68 @@ $("#song2").on('click', songChoice);
 $("#song3").on('click', songChoice);
 
 $("#song4").on('click', songChoice);
+
+
+
+
+//---------------------   CLOCK OBJECT   ---------------------//
+// TODO Need to add the restart logic to the count method. 
+
+var intervalId;
+var clockRunning = false;
+var stopwatch = {
+
+//  time: 30,
+  lap: 1,
+
+  reset: function() {
+    time = 0;
+    $("#game-clock").html("00:00");
+  },
+
+  start: function() {
+    if (!clockRunning) {
+        intervalId = setInterval(stopwatch.count, 1000);
+        clockRunning = true;
+    }
+  },
+
+  stop: function() {
+    clearInterval(intervalId);
+    clockRunning = false;
+  },
+
+  count: function() {
+    if(time > 0) {
+       time--;
+    }
+    else {
+    // TODO Need restart logic in here
+
+
+        time = 30;
+    }
+
+    var converted = stopwatch.timeConverter(time);
+
+    $("#game-clock").html(converted);
+  },
+
+  timeConverter: function(t) {
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+
+    return minutes + ":" + seconds;
+  }
+};
