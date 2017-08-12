@@ -2,7 +2,7 @@
 
 var express = require('express');
 var app = express();
-var dataFile = require('./data/data.json');
+var dataFile = require('./data/songFile.json');
 var exphbs = require("express-handlebars");
 var path = require('path');
 var moment = require('moment');

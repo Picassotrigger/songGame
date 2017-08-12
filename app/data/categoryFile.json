@@ -1,0 +1,21 @@
+{
+  "categories": [{
+    "name" : "Classical"
+  },{
+    "name" : "Pop"
+  },{
+    "name" : "Rock"
+  },{
+    "name" : "Hip Hop"
+  },{
+    "name" : "Funk"
+  },{
+    "name" : "Blues"
+  },{
+    "name" : "Opera"
+  },{
+    "name" : "Reggae"
+  },{
+    "name" : "Alternative"
+  }]
+}
