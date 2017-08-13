@@ -70,13 +70,43 @@ io.attach(server);
 
 io.on('connection', function(socket) {
   console.log('User Connected');
+  console.log(socket.id);
 
   // ----------------   Listens for messages that have been posted and resends them to all users  ----------------
   socket.on('postMessage', function(data) {
     io.emit('updateMessages', data);
+    console.log(socket.id);
   });
 
   socket.on('disconnect', function() {
     console.log('User Disconnected');
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ----------------   END   ----------------
