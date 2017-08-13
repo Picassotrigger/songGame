@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<body id="{{pageId}}">
+  <main class="container">
+    <form name="chatForm" class="col s12">
+      <div class="row">
+        <div class="col s12 m3"></div>
+        <div class="input-field col s12 m6">
+          <input id="chat-user" type="text" class="validate">
+          <label for="name">Name</label>
+        </div>
+        <div class="col s12 m3"></div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m3"></div>
+        <div class="input-field col s12 m6">
+          <input id="chat-message" type="text" class="validate">
+          <label for="message">Message</label>
+        </div>
+        <div class="col s12 m3"></div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m3"></div>
+        <div class="input-field col s12 m6 center-align">
+          <button id="chat-button" class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+        <div class="col s12 m3"></div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col s12 m3"></div>
+      <div class="chat-display col s12 m6">
+        <p class="chat-text">Messages</p>
+      </div>
+      <div class="col s12 m3"></div>
+    </div>
+  </main>
+</body>

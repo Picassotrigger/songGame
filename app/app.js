@@ -11,8 +11,6 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 
 
-
-
 app.engine("handlebars", exphbs({
   defaultLayout  : 'main',
   layoutsDir     : 'app/views/layouts/',
@@ -29,12 +27,12 @@ app.set('views', 'app/views');
 app.use(express.static('app/public'));
 app.use(require('./routes/api'));
 app.use(require('./routes/category'));
+app.use(require('./routes/chat'));
 app.use(require('./routes/game'));
 app.use(require('./routes/index'));
 app.use(require('./routes/login'));
 app.use(require('./routes/register'));
 app.use(require('./routes/room'));
-app.use(require('./routes/songs'));
 
 
 app.use(bodyParser.json());
