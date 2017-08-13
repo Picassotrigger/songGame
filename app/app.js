@@ -16,8 +16,8 @@ var path = require('path');
 // ----------------   Setup Handlebars   ----------------
 app.engine("handlebars", exphbs({
   defaultLayout  : 'main',
-  layoutsDir     : 'app/views/layouts/',
-  partialsDir    : 'app/views/partials/'
+  layoutsDir     : 'views/layouts/',
+  partialsDir    : 'views/partials/'
 }));
 app.set("view engine", "handlebars");
 
@@ -31,11 +31,11 @@ app.set('appData', dataFile);
 
 
 // ----------------   Setup default views folder   ----------------
-app.set('views', 'app/views');
+app.set('views', 'views');
 
 
 // ----------------   Setup public folder   ----------------
-app.use(express.static('app/public'));
+app.use(express.static('public'));
 
 
 // ----------------   Setup routes   ----------------
