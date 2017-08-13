@@ -1,6 +1,6 @@
-// var chatForm = document.forms.chatForm;
+var chatForm = document.forms.chatForm;
 
-// if(chatForm) {
+if(chatForm) {
   var chatUser = document.querySelector('#chat-user');
   var chatMessage = document.querySelector('#chat-message');
 
@@ -8,15 +8,15 @@
     event.preventDefault();
 
     console.log('been clicked');
-    // showMessage({
-    //   username: chatUser.value,
-    //   message: chatMessage.value
-    // });
-    //
-    // chatMessage.value = '';
-    // chatMessage.focus();
+    showMessage({
+      username: chatUser.value,
+      message: chatMessage.value
+    });
+
+    chatMessage.value = '';
+    chatMessage.focus();
   });
-// }
+}
 
 
 function showMessage(data) {
@@ -24,7 +24,7 @@ function showMessage(data) {
   var newMessage = document.createElement('p');
 
   newMessage.className = 'chat-text';
-  newMessage.innerHTML = '<strong>' + data.username + '</strong>' + data.message;
+  newMessage.innerHTML = '<strong>' + data.username + '</strong>' + "     " + data.message;
 
   chatDisplay.insertBefore(newMessage, chatDisplay.firstChild);
 }
