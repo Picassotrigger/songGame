@@ -7,6 +7,9 @@ var exphbs = require("express-handlebars");
 var path = require('path');
 var moment = require('moment');
 var io = require('socket.io')();
+var bodyParser = require('body-parser');
+var fs = require('fs');
+
 
 
 
@@ -32,6 +35,12 @@ app.use(require('./routes/login'));
 app.use(require('./routes/register'));
 app.use(require('./routes/room'));
 app.use(require('./routes/songs'));
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 
 
