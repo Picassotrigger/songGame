@@ -3,7 +3,10 @@ var router = express.Router();
 
 
 router.get('/register', function(req, res) {
-  res.render('register');
+  res.render('register', {
+    pageTitle: 'Register',
+    pageId: 'register'
+  });
 });
 
 

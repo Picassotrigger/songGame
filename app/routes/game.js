@@ -22,6 +22,8 @@ router.get('/game', function(req, res) {
 
 
   res.render('game', {
+    pageTitle: 'Game',
+    pageId: 'game',
     song1: dataFile.songs[song1].title + "    by    " + dataFile.songs[song1].artist,
     song2: dataFile.songs[song2].title + "    by    " + dataFile.songs[song2].artist,
     song3: dataFile.songs[song3].title + "    by    " + dataFile.songs[song3].artist,

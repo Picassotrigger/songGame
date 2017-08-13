@@ -6,6 +6,7 @@ var dataFile = require('./data/songFile.json');
 var exphbs = require("express-handlebars");
 var path = require('path');
 var moment = require('moment');
+var io = require('socket.io')();
 
 
 
@@ -37,4 +38,15 @@ app.use(require('./routes/songs'));
 
 var server = app.listen(app.get('port'), function() {
   console.log('Listening on port ' + app.get('port'));
+});
+
+
+io.attach(server);
+
+io.on('connection', function(socket) {
+  console.log('User Connected');
+
+  socket.on('disconnected', function() {
+    console.log('User Disconnected');
+  });
 });

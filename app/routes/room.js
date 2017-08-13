@@ -3,7 +3,10 @@ var router = express.Router();
 
 
 router.get('/room', function(req, res) {
-  res.render('room');
+  res.render('room', {
+    pageTitle: 'Room',
+    pageId: 'room'
+  });
 });
 
 
