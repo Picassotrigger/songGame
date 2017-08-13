@@ -49,10 +49,11 @@ $("#song4").on('click', songChoice);
 
 
 //---------------------   CLOCK OBJECT   ---------------------//
-// TODO Need to add the restart logic to the count method. 
+// TODO Need to add the restart logic to the count method.
 
 var intervalId;
 var clockRunning = false;
+
 var stopwatch = {
 
 //  time: 30,

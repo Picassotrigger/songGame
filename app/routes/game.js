@@ -6,8 +6,6 @@ var router = express.Router();
 router.get('/game', function(req, res) {
 
   var dataFile = req.app.get('appData');
-  var song = dataFile.songs[req.params.songid];
-  var songArray = [];
 
   function randomSong() {
     var result = Math.floor(Math.random() * 8) + 1;
@@ -29,6 +27,8 @@ router.get('/game', function(req, res) {
     song3: dataFile.songs[song3].title + "    by    " + dataFile.songs[song3].artist,
     song4: dataFile.songs[song4].title + "    by    " + dataFile.songs[song4].artist
   });
+
+
 });
 
 

@@ -24,6 +24,7 @@ app.set('views', 'app/views');
 
 
 app.use(express.static('app/public'));
+app.use(require('./routes/api'));
 app.use(require('./routes/category'));
 app.use(require('./routes/game'));
 app.use(require('./routes/index'));
