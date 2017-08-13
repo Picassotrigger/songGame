@@ -4,11 +4,12 @@ var express = require('express');
 var app = express();
 var dataFile = require('./data/songFile.json');
 var exphbs = require("express-handlebars");
-var path = require('path');
 var moment = require('moment');
 var io = require('socket.io')();
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var path = require('path');
+
 
 
 app.engine("handlebars", exphbs({
@@ -54,7 +55,11 @@ io.attach(server);
 io.on('connection', function(socket) {
   console.log('User Connected');
 
-  socket.on('disconnected', function() {
+  socket.on('postMessage', function(data) {
+    io.emit('updateMessages', data);
+  });
+
+  socket.on('disconnect', function() {
     console.log('User Disconnected');
   });
 });

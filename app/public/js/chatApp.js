@@ -1,22 +1,34 @@
-var chatForm = document.forms.chatForm;
+var socket = io();
 
-if(chatForm) {
-  var chatUser = document.querySelector('#chat-user');
-  var chatMessage = document.querySelector('#chat-message');
+socket.on('connect', function() {
+  var chatForm = document.forms.chatForm;
 
-  chatForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+  if(chatForm) {
+    var chatUser = document.querySelector('#chat-user');
+    var chatMessage = document.querySelector('#chat-message');
 
-    console.log('been clicked');
-    showMessage({
-      username: chatUser.value,
-      message: chatMessage.value
+    chatForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      socket.emit('postMessage', {
+        username: chatUser.value,
+        message: chatMessage.value
+      });
+
+      // showMessage({
+      //   username: chatUser.value,
+      //   message: chatMessage.value
+      // });
+
+      chatMessage.value = '';
+      chatMessage.focus();
     });
 
-    chatMessage.value = '';
-    chatMessage.focus();
-  });
-}
+    socket.on('updateMessages', function(data) {
+      showMessage(data);
+    });
+  }
+});
 
 
 function showMessage(data) {
