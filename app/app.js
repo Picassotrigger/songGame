@@ -58,7 +58,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 
 
-// ----------------   HTTP SERVER   ----------------
+// ----------------   EXPRESS HTTP SERVER   ----------------
 var server = app.listen(app.get('port'), function() {
   console.log('Listening on port ' + app.get('port'));
 });
