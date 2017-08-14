@@ -4,7 +4,7 @@
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
-var dataFile = require('./data/songFile.json');
+var dataFile = require('./app/data/songFile.json');
 var exphbs = require("express-handlebars");
 var moment = require('moment');
 var io = require('socket.io')(server);
@@ -16,8 +16,8 @@ var path = require('path');
 // ----------------   Setup Handlebars   ----------------
 app.engine("handlebars", exphbs({
   defaultLayout  : 'main',
-  layoutsDir     : 'views/layouts/',
-  partialsDir    : 'views/partials/'
+  layoutsDir     : 'app/views/layouts/',
+  partialsDir    : 'app/views/partials/'
 }));
 app.set("view engine", "handlebars");
 
@@ -31,22 +31,22 @@ app.set('appData', dataFile);
 
 
 // ----------------   Setup default views folder   ----------------
-app.set('views', 'views');
+app.set('views', 'app/views');
 
 
 // ----------------   Setup public folder   ----------------
-app.use(express.static('public'));
+app.use(express.static('app/public'));
 
 
 // ----------------   Setup routes   ----------------
-app.use(require('./routes/api'));
-app.use(require('./routes/category'));
-app.use(require('./routes/chat'));
-app.use(require('./routes/game'));
-app.use(require('./routes/index'));
-app.use(require('./routes/login'));
-app.use(require('./routes/register'));
-app.use(require('./routes/room'));
+app.use(require('./app/routes/api'));
+app.use(require('./app/routes/category'));
+app.use(require('./app/routes/chat'));
+app.use(require('./app/routes/game'));
+app.use(require('./app/routes/index'));
+app.use(require('./app/routes/login'));
+app.use(require('./app/routes/register'));
+app.use(require('./app/routes/room'));
 
 
 // ----------------   Setup bodyParser   ----------------
@@ -70,43 +70,13 @@ io.attach(server);
 
 io.on('connection', function(socket) {
   console.log('User Connected');
-  console.log(socket.id);
 
   // ----------------   Listens for messages that have been posted and resends them to all users  ----------------
   socket.on('postMessage', function(data) {
     io.emit('updateMessages', data);
-    console.log(socket.id, data);
   });
 
   socket.on('disconnect', function() {
     console.log('User Disconnected');
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ----------------   END   ----------------
