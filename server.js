@@ -69,11 +69,14 @@ var server = app.listen(app.get('port'), function() {
 io.attach(server);
 
 io.on('connection', function(socket) {
+
   console.log('User Connected' + "......" + socket.id);
+
 
   // ----------------   Listens for messages that have been posted and resends them to all users  ----------------
   socket.on('postMessage', function(data) {
     io.emit('updateMessages', data);
+    console.log(socket.id, data);
   });
 
   socket.on('disconnect', function() {
