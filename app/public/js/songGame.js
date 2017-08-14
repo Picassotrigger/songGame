@@ -19,9 +19,10 @@ function songChoice() {
 }
 
 
+
 // Choosing room
 $("#room1").on('click', roomChoice);
-
+  
 $("#room2").on('click', roomChoice);
 
 
@@ -110,3 +111,65 @@ var stopwatch = {
     return minutes + ":" + seconds;
   }
 };
+
+
+////////////HIDE and SHOW\\\\\\\\\\\\\\\\
+  //Navbar
+$("#loginButton").on("click", function(){
+  $("#index").hide(1000);
+  $("#register").hide(1000);
+  $("#chat").hide(1000);
+  $("#category").hide(1000);
+  $("#game").hide(1000);
+  $("#room").hide(1000);
+  $("#login").show(1500);
+});
+
+$("#registerButton").on("click", function(){
+  $("#index").hide(1000);
+  $("#login").hide(1000);
+  $("#chat").hide(1000);
+  $("#category").hide(1000);
+  $("#game").hide(1000);
+  $("#room").hide(1000);
+  $("#register").show(1500);
+});
+
+$("#chatButton").on("click", function(){
+  $("#index").hide(1000);
+  $("#login").hide(1000);
+  $("#register").hide(1000);
+  $("#category").hide(1000);
+  $("#game").hide(1000);
+  $("#room").hide(1000);
+  $("#chat").show(1500);
+});
+
+//login page
+$("#loginSubmit").on("click",function(e){
+
+e.preventDefault();
+  var username=$("#username").val().trim();
+   console.log(username);
+  //var password=$("#password").val().trim();
+  socket.emit("new user",username);
+  $("#login").hide(1000);
+  $("#room").show(1500);
+
+});
+
+////room page
+    //play
+$("#play").on("click", function(){
+  $("#room").hide(1000);
+  $("#category").show(1500);
+
+});
+
+//     //multiplayer
+// $("#room2").on("click", function(){
+//   $("#room").hide(1000);
+//   $("#game").show(1500);
+// ///////Need logic code added --if player is first in room, show categories. If game has already started show game.
+// })
+
