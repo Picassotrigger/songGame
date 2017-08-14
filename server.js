@@ -71,33 +71,6 @@ io.attach(server);
 io.on('connection', function(socket) {
   console.log('User Connected');
 
-/****************user name from client*************/
-
-
-var addedUser = false;
- socket.on("new user", function (username) {
-    if (addedUser) return;
-
-    // we store the username in the socket session for this client
-    socket.username = username;
-
-    ++numUsers;
-    addedUser = true;
-    socket.emit('login', {
-      numUsers: numUsers
-    });
-    console.log(numUsers);
-    // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined', {
-      username: socket.username,
-      numUsers: numUsers
-    });
-  });
-
-
-
-
-
   // ----------------   Listens for messages that have been posted and resends them to all users  ----------------
   socket.on('postMessage', function(data) {
     io.emit('updateMessages', data);
