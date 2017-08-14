@@ -1,3 +1,3 @@
 # songGame
 
-To start application: run 'app/app.js'
+To start application: run 'server.js'
