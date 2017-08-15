@@ -11,6 +11,8 @@ var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var path = require('path');
+var mysql = require('mysql');
+
 
 
 // ----------------   Setup Handlebars   ----------------
