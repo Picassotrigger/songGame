@@ -21,6 +21,11 @@ var io = require('socket.io')(http);
 
 
 
+// Requiring our models for syncing
+var db = require("./app/models");
+
+
+
 // ----------------   Setup Handlebars   ----------------
 app.engine("handlebars", exphbs({
     defaultLayout: 'main',
@@ -55,6 +60,7 @@ app.use(require('./app/routes/index'));
 app.use(require('./app/routes/login'));
 app.use(require('./app/routes/register'));
 app.use(require('./app/routes/room'));
+// app.use(require('./app/routes/songAPI'));
 
 
 // ----------------   Setup bodyParser   ----------------
@@ -79,6 +85,18 @@ app.use(bodyParser.json({
 http.listen(PORT, function() {
     console.log('listening on *:3000');
 });
+
+
+
+// // Syncing our sequelize models and then starting our Express app
+// // =============================================================
+// db.sequelize.sync({ force: false}).then(function() {
+//   app.listen(PORT, function() {
+//     console.log("App listening on PORT " + PORT);
+//   });
+// });
+
+
 
 
 // --------- Function to collect the game details and player details ----------
