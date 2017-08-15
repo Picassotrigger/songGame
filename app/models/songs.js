@@ -1,5 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Songs = sequelize.define("songs", {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     song: {
       type: DataTypes.STRING,
       allowNull: false
@@ -17,6 +23,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   });
-  
+
   return Songs;
 };
